@@ -58,9 +58,48 @@ class Solution{
 public class stringcheck {
 
 	public static void main(String[] args) {
+		int i, pass=0,fail=0;
 		Solution sol = new Solution();
-		String [][] input = { {"a","b"}, {"b", "b", "a"}, {"b", "a"} };
-		System.out.println(sol.allStringSetsIdentical(input));
+		String [][][] input = {
+                null,
+                {},
+                {{}},
+                {{"a"}},
+                { {}, {} },
+                { {}, {"a"} },
+                { {"a", "b"}, {"b", "b", "a"}, {"b", "a"} },
+                { {"a", "b"}, {"a"}, {"b"}},
+                { {"a"}, {"b"}, {"c"} }
+		};
+        boolean[] result={
+                true,
+                true,
+                true,
+                true,
+                true,
+                false,
+                true,
+                false,
+                false
+        };
+
+		System.out.println("Executing test cases..");
+		for(i=0;i<input.length;i++){
+			boolean status;
+			status = sol.allStringSetsIdentical(input[i]);
+			if(status==result[i]){
+				System.out.println("Test - " + (i+1)+ " : passed");
+				pass++;
+			}else{
+				System.out.println("Test - " + (i+1)+ " : failed");
+				fail++;
+			}
+		}
+		System.out.println();
+		System.out.println("Summary of test results");
+		System.out.println("Total Test Cases : " + (pass+fail));
+		System.out.println("Total Failed Test Cases : " + (fail));
+		System.out.println("Total Passed Cases : " + (pass));
 		
 
 	}
